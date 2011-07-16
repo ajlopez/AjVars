@@ -31,5 +31,28 @@
             variable.Value = "1";
             Assert.AreEqual(1, variable.Value);
         }
+
+        [TestMethod]
+        public void CreateShortVariableAndGetValue()
+        {
+            Variable variable = new ShortVariable();
+            Assert.AreEqual((short) 0, variable.Value);
+        }
+
+        [TestMethod]
+        public void CreateShortVariableSetAndGetValue()
+        {
+            Variable variable = new ShortVariable();
+            variable.Value = (short) 1;
+            Assert.AreEqual((short) 1, variable.Value);
+        }
+
+        [TestMethod]
+        public void SetShortVariableWithStringValue()
+        {
+            Variable variable = new ShortVariable();
+            variable.Value = "1";
+            Assert.AreEqual((short) 1, variable.Value);
+        }
     }
 }
