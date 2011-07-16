@@ -7,16 +7,6 @@
 
     public class IntegerVariable : Variable
     {
-        public override object Value
-        {
-            get
-            {
-                return 0;
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public override object Value { get; set; }
     }
 }
