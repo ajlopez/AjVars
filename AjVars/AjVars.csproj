@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByteMemory.cs" />
     <Compile Include="ShortVariable.cs" />
     <Compile Include="IntegerVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
