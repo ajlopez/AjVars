@@ -17,8 +17,10 @@
         public byte[] GetBytes(int address, int count)
         {
             byte[] result = new byte[count];
+
             for (int k = 0; k < count; k++)
                 result[k] = this.bytes[k + address];
+
             return result;
         }
     }

@@ -21,7 +21,7 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(OutOfMemoryException))]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
         public void RaiseWhenAddressIsBeyondLimits()
         {
             ByteMemory bytememory = new ByteMemory();
