@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Alarm.cs" />
     <Compile Include="ByteMemory.cs" />
+    <Compile Include="MinimumAlarm.cs" />
     <Compile Include="ShortVariable.cs" />
     <Compile Include="IntegerVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
