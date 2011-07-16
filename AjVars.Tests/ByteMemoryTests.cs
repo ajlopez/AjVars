@@ -54,5 +54,12 @@
             Assert.AreEqual(100, bytes.Length);
             Assert.IsTrue(bytes.All(b => b == 0));
         }
+
+        [TestMethod]
+        public void SetAndGetOneByte()
+        {
+            ByteMemory bytememory = new ByteMemory();
+            bytememory.SetBytes(0, new byte[] { (byte) 16 });
+        }
     }
 }

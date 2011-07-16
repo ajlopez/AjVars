@@ -29,5 +29,10 @@
 
             return result;
         }
+
+        public void SetBytes(int address, byte[] values)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
