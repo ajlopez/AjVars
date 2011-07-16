@@ -26,18 +26,18 @@
 
         public event NewValueHandler NewValue;
 
-        protected void RaiseNewValue(object oldvalue, object newvalue)
+        internal void RaiseNewValue(object oldvalue, object newvalue)
         {
             if (this.NewValue != null)
                 this.NewValue(oldvalue, newvalue);
         }
 
-        protected byte[] GetBytesFromMemory()
+        internal byte[] GetBytesFromMemory()
         {
             return this.memory.GetBytes(this.address, this.count);
         }
 
-        protected void SetBytesToMemory(byte[] values)
+        internal void SetBytesToMemory(byte[] values)
         {
             this.memory.SetBytes(this.address, values);
         }
@@ -82,8 +82,8 @@
 
         public abstract object ParseString(string text);
 
-        protected abstract byte[] ToBytes(T value);
+        internal abstract byte[] ToBytes(T value);
 
-        protected abstract T FromBytes(byte[] values);
+        internal abstract T FromBytes(byte[] values);
     }
 }

@@ -17,7 +17,7 @@
             return Int32.Parse(text);
         }
 
-        protected override byte[] ToBytes(int value)
+        internal override byte[] ToBytes(int value)
         {
             byte[] bytes = new byte[4];
             bytes[0] = (byte)((value >> 24) & 0xff);
@@ -27,7 +27,7 @@
             return bytes;
         }
 
-        protected override int FromBytes(byte[] values)
+        internal override int FromBytes(byte[] values)
         {
             int value = ((int)values[3]) | (((int)values[2]) << 8)
                 | (((int)values[1]) << 16)

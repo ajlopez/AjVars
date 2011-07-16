@@ -18,7 +18,7 @@
             return Int16.Parse(text);
         }
 
-        protected override byte[] ToBytes(short value)
+        internal override byte[] ToBytes(short value)
         {
             byte[] bytes = new byte[2];
             bytes[0] = (byte)((value >> 8) & 0xff);
@@ -26,7 +26,7 @@
             return bytes;
         }
 
-        protected override short FromBytes(byte[] values)
+        internal override short FromBytes(byte[] values)
         {
             short value = (short)(((ushort)values[1]) | (((ushort)values[0]) << 8));
             return value;
