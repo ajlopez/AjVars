@@ -19,5 +19,13 @@
             Assert.AreEqual(10, bytes.Length);
             Assert.IsTrue(bytes.All(b => b == 0));
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(OutOfMemoryException))]
+        public void RaiseWhenAddressIsBeyondLimits()
+        {
+            ByteMemory bytememory = new ByteMemory();
+            bytememory.GetBytes(200, 10);
+        }
     }
 }
