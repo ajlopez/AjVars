@@ -23,5 +23,13 @@
             variable.Value = 1;
             Assert.AreEqual(1, variable.Value);
         }
+
+        [TestMethod]
+        public void SetIntegerVariableWithStringValue()
+        {
+            Variable variable = new IntegerVariable();
+            variable.Value = "1";
+            Assert.AreEqual(1, variable.Value);
+        }
     }
 }
