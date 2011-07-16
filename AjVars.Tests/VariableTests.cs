@@ -15,5 +15,13 @@
             Variable variable = new IntegerVariable();
             Assert.AreEqual(0, variable.Value);
         }
+
+        [TestMethod]
+        public void CreateIntegerVariableSetAndGetValue()
+        {
+            Variable variable = new IntegerVariable();
+            variable.Value = 1;
+            Assert.AreEqual(1, variable.Value);
+        }
     }
 }
