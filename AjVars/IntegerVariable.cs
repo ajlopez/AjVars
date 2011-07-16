@@ -7,22 +7,9 @@
 
     public class IntegerVariable : Variable<int>
     {
-        private int value;
-
-        public override object Value
+        public override object ParseString(string text)
         {
-            get { return this.value; }
-            set
-            {
-                if (value is string)
-                {
-                    this.value = Int32.Parse((string) value);
-                }
-                else
-                {
-                    this.value = (int)value;
-                }
-            }
+            return Int32.Parse(text);
         }
     }
 }

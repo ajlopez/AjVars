@@ -7,22 +7,9 @@
 
     public class ShortVariable : Variable<short>
     {
-        private short value;
-
-        public override object Value
+        public override object ParseString(string text)
         {
-            get { return this.value; }
-            set
-            {
-                if (value is string)
-                {
-                    this.value = Int16.Parse((string) value);
-                }
-                else
-                {
-                    this.value = (short)value;
-                }
-            }
+            return Int16.Parse(text);
         }
     }
 }
