@@ -38,6 +38,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlarmTests.cs" />
     <Compile Include="ByteMemoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VariableTests.cs" />
