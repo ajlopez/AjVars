@@ -56,5 +56,21 @@
 
             Assert.AreEqual(1, count);
         }
+
+        [TestMethod]
+        public void RaiseMinimumAlarmThreeTimes()
+        {
+            int count = 0;
+            this.integerVariable.Value = 20;
+
+            MinimumAlarm<int> alarm = new MinimumAlarm<int>(this.integerVariable, 10);
+            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+
+            this.integerVariable.Value = 5;
+            this.integerVariable.Value = 4;
+            this.integerVariable.Value = 3;
+
+            Assert.AreEqual(3, count);
+        }
     }
 }
