@@ -72,5 +72,35 @@
 
             Assert.AreEqual(3, count);
         }
+
+        [TestMethod]
+        public void RaiseMaximumAlarm()
+        {
+            int count = 0;
+            this.integerVariable.Value = 20;
+
+            MaximumAlarm<int> alarm = new MaximumAlarm<int>(this.integerVariable, 30);
+            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+
+            this.integerVariable.Value = 45;
+
+            Assert.AreEqual(1, count);
+        }
+
+        [TestMethod]
+        public void RaiseMaximumAlarmThreeTimes()
+        {
+            int count = 0;
+            this.integerVariable.Value = 20;
+
+            MaximumAlarm<int> alarm = new MaximumAlarm<int>(this.integerVariable, 40);
+            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+
+            this.integerVariable.Value = 45;
+            this.integerVariable.Value = 44;
+            this.integerVariable.Value = 43;
+
+            Assert.AreEqual(3, count);
+        }
     }
 }
