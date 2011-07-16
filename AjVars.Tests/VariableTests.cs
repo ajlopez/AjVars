@@ -54,5 +54,18 @@
             variable.Value = "1";
             Assert.AreEqual((short) 1, variable.Value);
         }
+
+        [TestMethod]
+        public void RaiseNewValueEvent()
+        {
+            int count = 0;
+
+            Variable variable = new IntegerVariable(0, new ByteMemory());
+            variable.NewValue += (oldvalue, newvalue) => { count++; };
+
+            variable.Value = 1;
+
+            Assert.AreEqual(1, count);
+        }
     }
 }

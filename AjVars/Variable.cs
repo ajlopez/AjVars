@@ -22,6 +22,16 @@
 
         public int Size { get { return this.count; } }
 
+        public delegate void NewValueHandler(object oldvalue, object newvalue);
+
+        public event NewValueHandler NewValue;
+
+        protected void RaiseNewValue(object oldvalue, object newvalue)
+        {
+            if (this.NewValue != null)
+                this.NewValue(oldvalue, newvalue);
+        }
+
         protected byte[] GetBytesFromMemory()
         {
             return this.memory.GetBytes(this.address, this.count);
@@ -60,7 +70,13 @@
                     newvalue = (T)value;
                 }
 
-                this.SetBytesToMemory(this.ToBytes(newvalue));
+                T oldvalue = (T)this.Value;
+
+                if (!newvalue.Equals(oldvalue))
+                {
+                    this.SetBytesToMemory(this.ToBytes(newvalue));
+                    this.RaiseNewValue(oldvalue, newvalue);
+                }
             }
         }
 
