@@ -7,11 +7,11 @@
 
     public class ByteMemory
     {
-        private const int defaultSize = 100;
+        private const int DefaultSize = 100;
         private byte[] bytes;
 
         public ByteMemory()
-            : this(defaultSize)
+            : this(DefaultSize)
         {
         }
 

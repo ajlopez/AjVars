@@ -1,0 +1,51 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name="ByteMemory.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/16/2011 19:24:26</timestamp>
+    <milliseconds>484</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/16/2011 11:53:34</timestamp>
+    <milliseconds>285</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IntegerVariable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/16/2011 19:11:53</timestamp>
+    <milliseconds>711</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Variable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/16/2011 19:27:29</timestamp>
+    <milliseconds>285</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="1050597533">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="ShortVariable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/16/2011 19:27:40</timestamp>
+    <milliseconds>151</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

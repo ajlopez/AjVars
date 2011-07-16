@@ -9,7 +9,7 @@
     {
         private int address;
         private int count;
-        ByteMemory memory;
+        private ByteMemory memory;
 
         public Variable(int address, int count, ByteMemory memory)
         {
@@ -19,6 +19,8 @@
         }
 
         public abstract object Value { get; set; }
+
+        public int Size { get { return this.count; } }
 
         protected byte[] GetBytesFromMemory()
         {
@@ -31,7 +33,7 @@
         }
     }
 
-    public abstract class Variable<T> : Variable
+    public abstract class Variable<T> : Variable 
     {
         public Variable(int address, int count, ByteMemory memory)
             : base(address, count, memory)
@@ -40,14 +42,18 @@
 
         public override object Value
         {
-            get { return this.FromBytes(this.GetBytesFromMemory()); }
+            get 
+            { 
+                return this.FromBytes(this.GetBytesFromMemory());
+            }
+
             set
             {
                 T newvalue;
 
                 if (value is string)
                 {
-                    newvalue = (T)ParseString((string)value);
+                    newvalue = (T)this.ParseString((string)value);
                 }
                 else
                 {

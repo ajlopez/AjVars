@@ -2,9 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
-    using System.IO;
 
     public class ShortVariable : Variable<short>
     {
@@ -28,7 +28,7 @@
 
         protected override short FromBytes(byte[] values)
         {
-            short value =(short) ( ((ushort)values[1]) | (((ushort)values[0]) << 8));
+            short value = (short)(((ushort)values[1]) | (((ushort)values[0]) << 8));
             return value;
         }
     }
