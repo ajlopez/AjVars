@@ -29,6 +29,22 @@
         }
 
         [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void RaiseWhenAddressIsNegative()
+        {
+            ByteMemory bytememory = new ByteMemory();
+            bytememory.GetBytes(-20, 10);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void RaiseWhenRangeIsCrossingBoundary()
+        {
+            ByteMemory bytememory = new ByteMemory();
+            bytememory.GetBytes(90, 20);
+        }
+
+        [TestMethod]
         public void GetLastBytesFromBigMemory()
         {
             ByteMemory bytememory = new ByteMemory(1000);
