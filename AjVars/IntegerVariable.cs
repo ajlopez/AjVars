@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    public class IntegerVariable : Variable
+    public class IntegerVariable : Variable<int>
     {
         private int value;
 

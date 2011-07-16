@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    public class ShortVariable : Variable
+    public class ShortVariable : Variable<short>
     {
         private short value;
 

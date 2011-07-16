@@ -9,4 +9,8 @@
     {
         public abstract object Value { get; set; }
     }
+
+    public abstract class Variable<T> : Variable
+    {
+    }
 }
