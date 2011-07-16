@@ -7,11 +7,17 @@
 
     public class ByteMemory
     {
+        private const int defaultSize = 100;
         private byte[] bytes;
 
         public ByteMemory()
+            : this(defaultSize)
         {
-            this.bytes = new byte[100];
+        }
+
+        public ByteMemory(int size)
+        {
+            this.bytes = new byte[size];
         }
 
         public byte[] GetBytes(int address, int count)
