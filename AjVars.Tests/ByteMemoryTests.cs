@@ -59,7 +59,33 @@
         public void SetAndGetOneByte()
         {
             ByteMemory bytememory = new ByteMemory();
-            bytememory.SetBytes(0, new byte[] { (byte) 16 });
+            bytememory.SetBytes(10, new byte[] { (byte) 16 });
+
+            byte[] result = bytememory.GetBytes(10, 1);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Length);
+            Assert.AreEqual(16, result[0]);
+        }
+
+        [TestMethod]
+        public void SetAndGetOneHundredBytes()
+        {
+            byte[] values = new byte[100];
+
+            for (int k = 0; k < values.Length; k++)
+                values[k] = (byte) k;
+
+            ByteMemory bytememory = new ByteMemory(1000);
+            bytememory.SetBytes(10, values);
+
+            byte[] result = bytememory.GetBytes(10, values.Length);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(100, result.Length);
+
+            for (int k = 0; k < values.Length; k++)
+                Assert.AreEqual(values[k], result[k]);
         }
     }
 }

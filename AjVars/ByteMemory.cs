@@ -32,7 +32,8 @@
 
         public void SetBytes(int address, byte[] values)
         {
-            throw new NotImplementedException();
+            for (int k = 0; k < values.Length; k++)
+                this.bytes[address + k] = values[k];
         }
     }
 }
