@@ -48,6 +48,14 @@
                 this.bytes[address / 8] &= (byte) (0xff ^ (1 << (address % 8)));
         }
 
+        public bool GetBit(int address)
+        {
+            byte value = this.bytes[address / 8];
+            int bit = value & (1 << (address % 8));
+
+            return bit != 0;
+        }
+
         public void NewValues(int address, byte[] newvalues)
         {
             bool changed = false;

@@ -151,5 +151,19 @@
             memory.SetBit(9, false);
             Assert.AreEqual(0xfc, memory.GetBytes(1, 1)[0]);
         }
+
+        [TestMethod]
+        public void GetBits()
+        {
+            ByteMemory memory = new ByteMemory();
+
+            memory.SetBytes(0, new byte[] { 0xff, 0xff });
+
+            for (int k = 0; k < 16; k++)
+                Assert.IsTrue(memory.GetBit(k));
+
+            for (int k = 16; k < 32; k++)
+                Assert.IsFalse(memory.GetBit(k));
+        }
     }
 }
