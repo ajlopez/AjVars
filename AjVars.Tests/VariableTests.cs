@@ -151,5 +151,32 @@
             Assert.AreEqual(-1, oldvalue);
             Assert.AreEqual(-1, newvalue);
         }
+
+        [TestMethod]
+        public void CreateSetAndGetBitVariable()
+        {
+            ByteMemory memory = new ByteMemory();
+            Variable variable = new BitVariable(10, memory);
+
+            Assert.AreEqual(false, variable.Value);
+            variable.Value = true;
+            Assert.AreEqual(true, variable.Value);
+            Assert.IsTrue(memory.GetBit(10));
+        }
+
+        [TestMethod]
+        public void BitVariableTriggerNewValueWhenNewValuesInMemory()
+        {
+            int count = 0;
+
+            ByteMemory memory = new ByteMemory();
+            Variable variable = new BitVariable(10, memory);
+
+            variable.NewValue += (oldvalue, newvalue) => count++;
+
+            memory.NewValues(1, new byte[] { 0xff });
+
+            Assert.AreEqual(1, count);
+        }
     }
 }

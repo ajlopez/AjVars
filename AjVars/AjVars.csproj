@@ -49,6 +49,7 @@
     <Compile Include="BitTypeValue.cs" />
     <Compile Include="ByteMemory.cs" />
     <Compile Include="BytesTypeValue.cs" />
+    <Compile Include="BitVariable.cs" />
     <Compile Include="ShortTypeValue.cs" />
     <Compile Include="IntegerTypeValue.cs" />
     <Compile Include="MaximumAlarm.cs" />
