@@ -14,6 +14,8 @@
         {
             Variable variable = Variable.MakeIntegerVariable(0, new ByteMemory());
             Assert.AreEqual(0, variable.Value);
+            Assert.AreEqual(IntegerTypeValue.Instance, variable.TypeValue);
+            Assert.AreEqual(0, variable.Address);
         }
 
         [TestMethod]
@@ -45,14 +47,14 @@
         [TestMethod]
         public void CreateShortVariableAndGetValue()
         {
-            Variable variable = new ShortVariable(0, new ByteMemory());
+            Variable variable = Variable.MakeShortVariable(0, new ByteMemory());
             Assert.AreEqual((short) 0, variable.Value);
         }
 
         [TestMethod]
         public void CreateShortVariableSetAndGetValue()
         {
-            Variable variable = new ShortVariable(10, new ByteMemory());
+            Variable variable = Variable.MakeShortVariable(10, new ByteMemory());
             variable.Value = (short) 1;
             Assert.AreEqual((short) 1, variable.Value);
         }
@@ -60,7 +62,7 @@
         [TestMethod]
         public void SetShortVariableWithStringValue()
         {
-            Variable variable = new ShortVariable(20, new ByteMemory());
+            Variable variable = Variable.MakeShortVariable(20, new ByteMemory());
             variable.Value = "1";
             Assert.AreEqual((short) 1, variable.Value);
         }
@@ -68,7 +70,7 @@
         [TestMethod]
         public void SetShortVariableWithMinMaxValues()
         {
-            Variable variable = new ShortVariable(20, new ByteMemory());
+            Variable variable = Variable.MakeShortVariable(20, new ByteMemory());
             variable.Value = Int16.MaxValue;
             Assert.AreEqual(Int16.MaxValue, variable.Value);
             variable.Value = Int16.MinValue;
@@ -209,6 +211,38 @@
 
             Assert.AreEqual(0x01020304, oldvalue);
             Assert.AreEqual((short)0x0102, newvalue);
+        }
+
+        [TestMethod]
+        public void VariableChangesAddress()
+        {
+            ByteMemory memory = new ByteMemory();
+            Variable variable = Variable.MakeIntegerVariable(0, memory);
+
+            variable.Value = 0x01020304;
+
+            variable.Address = 2;
+
+            Assert.AreEqual(0x03040000, variable.Value);
+        }
+
+        [TestMethod]
+        public void VariableChangedAddressTriggerNewValue()
+        {
+            object oldvalue = -1;
+            object newvalue = -1;
+
+            ByteMemory memory = new ByteMemory();
+            Variable variable = Variable.MakeIntegerVariable(0, memory);
+
+            variable.Value = 0x01020304;
+
+            variable.NewValue += (oldv, newv) => { oldvalue = oldv; newvalue = newv; };
+
+            variable.Address = 2;
+
+            Assert.AreEqual(0x01020304, oldvalue);
+            Assert.AreEqual(0x03040000, newvalue);
         }
     }
 }

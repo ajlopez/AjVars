@@ -17,6 +17,11 @@
             return new Variable(address, BitTypeValue.Instance, memory);
         }
 
+        public static Variable MakeShortVariable(int address, ByteMemory memory)
+        {
+            return new Variable(address, ShortTypeValue.Instance, memory);
+        }
+
         public static Variable MakeIntegerVariable(int address, ByteMemory memory)
         {
             return new Variable(address, IntegerTypeValue.Instance, memory);
@@ -77,6 +82,20 @@
             set
             {
                 this.typeValue = value;
+                this.CheckNewValue();
+            }
+        }
+
+        public int Address
+        {
+            get
+            {
+                return this.address;
+            }
+
+            set
+            {
+                this.address = value;
                 this.CheckNewValue();
             }
         }
