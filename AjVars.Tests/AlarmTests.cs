@@ -44,7 +44,7 @@
         }
 
         [TestMethod]
-        public void TriggerMinimumAlarm()
+        public void TriggerStartMinimumAlarm()
         {
             int count = 0;
             this.integerVariable.Value = 20;
@@ -99,6 +99,62 @@
             this.integerVariable.Value = 45;
             this.integerVariable.Value = 44;
             this.integerVariable.Value = 43;
+
+            Assert.AreEqual(1, count);
+        }
+
+        [TestMethod]
+        public void TriggerStopAlarm()
+        {
+            int count = 0;
+            this.integerVariable.Value = 30;
+            Alarm alarm = new Alarm(this.integerVariable, value => ((int)value) == 30);
+            alarm.StopAlarm += (oldvalue, newvalue) => count++;
+            this.integerVariable.Value = 20;
+            Assert.AreEqual(1, count);
+        }
+
+        [TestMethod]
+        public void TriggerNoStopAlarm()
+        {
+            int count = 0;
+            this.integerVariable.Value = 0;
+            Alarm alarm = new Alarm(this.integerVariable, value => (int)value != 30);
+            alarm.StopAlarm += (oldvalue, newvalue) => count++;
+
+            for (int k = 1; k <= 100; k++)
+                if (k != 30)
+                    this.integerVariable.Value = k;
+
+            Assert.AreEqual(0, count);
+        }
+
+        [TestMethod]
+        public void TriggerStopMinimumAlarm()
+        {
+            int count = 0;
+            this.integerVariable.Value = 10;
+
+            MinimumAlarm alarm = new MinimumAlarm(this.integerVariable, 20);
+            alarm.StopAlarm += (oldvalue, newvalue) => count++;
+
+            this.integerVariable.Value = 25;
+
+            Assert.AreEqual(1, count);
+        }
+
+        [TestMethod]
+        public void TriggerStopAlarmOnlyWhenChangeCondition()
+        {
+            int count = 0;
+            this.integerVariable.Value = 8;
+
+            MinimumAlarm alarm = new MinimumAlarm(this.integerVariable, 10);
+            alarm.StopAlarm += (oldvalue, newvalue) => count++;
+
+            this.integerVariable.Value = 15;
+            this.integerVariable.Value = 14;
+            this.integerVariable.Value = 13;
 
             Assert.AreEqual(1, count);
         }
