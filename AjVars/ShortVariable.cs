@@ -9,7 +9,7 @@
     public class ShortVariable : Variable
     {
         public ShortVariable(int address, ByteMemory memory)
-            : base(address, new ShortTypeValue(), memory)
+            : base(address, ShortTypeValue.Instance, memory)
         {
         }
     }

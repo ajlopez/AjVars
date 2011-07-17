@@ -7,6 +7,14 @@
 
     public class IntegerTypeValue : BytesTypeValue
     {
+        private static IntegerTypeValue instance = new IntegerTypeValue();
+
+        private IntegerTypeValue()
+        {
+        }
+
+        public static IntegerTypeValue Instance { get { return instance; } }
+
         public override short Size { get { return 4; } }
 
         public override object ParseString(string text)

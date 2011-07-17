@@ -8,7 +8,7 @@
     public class IntegerVariable : Variable
     {
         public IntegerVariable(int address, ByteMemory memory)
-            : base(address, new IntegerTypeValue(), memory)
+            : base(address, IntegerTypeValue.Instance, memory)
         {
         }
     }

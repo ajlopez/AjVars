@@ -7,6 +7,14 @@
 
     public class ShortTypeValue : BytesTypeValue
     {
+        private static ShortTypeValue instance = new ShortTypeValue();
+
+        private ShortTypeValue()
+        {
+        }
+
+        public static ShortTypeValue Instance { get { return instance; } }
+
         public override short Size { get { return 2; } }
 
         public override object ParseString(string text)
