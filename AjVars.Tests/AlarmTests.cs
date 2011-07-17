@@ -18,7 +18,7 @@
         }
 
         [TestMethod]
-        public void RaiseAlarm()
+        public void TriggerStartAlarm()
         {
             int count = 0;
             this.integerVariable.Value = 20;
@@ -29,7 +29,7 @@
         }
 
         [TestMethod]
-        public void RaiseNoAlarm()
+        public void TriggerNoStartAlarm()
         {
             int count = 0;
             this.integerVariable.Value = 20;
@@ -44,7 +44,7 @@
         }
 
         [TestMethod]
-        public void RaiseMinimumAlarm()
+        public void TriggerMinimumAlarm()
         {
             int count = 0;
             this.integerVariable.Value = 20;
@@ -58,7 +58,7 @@
         }
 
         [TestMethod]
-        public void RaiseMinimumAlarmThreeTimes()
+        public void TriggerStartAlarmOnlyWhenChangeCondition()
         {
             int count = 0;
             this.integerVariable.Value = 20;
@@ -70,11 +70,11 @@
             this.integerVariable.Value = 4;
             this.integerVariable.Value = 3;
 
-            Assert.AreEqual(3, count);
+            Assert.AreEqual(1, count);
         }
 
         [TestMethod]
-        public void RaiseMaximumAlarm()
+        public void TriggerStartMaximumAlarm()
         {
             int count = 0;
             this.integerVariable.Value = 20;
@@ -88,7 +88,7 @@
         }
 
         [TestMethod]
-        public void RaiseMaximumAlarmThreeTimes()
+        public void TriggerStartMaximumAlarmOnlyOnce()
         {
             int count = 0;
             this.integerVariable.Value = 20;
@@ -100,7 +100,7 @@
             this.integerVariable.Value = 44;
             this.integerVariable.Value = 43;
 
-            Assert.AreEqual(3, count);
+            Assert.AreEqual(1, count);
         }
     }
 }
