@@ -178,5 +178,37 @@
 
             Assert.AreEqual(1, count);
         }
+
+        [TestMethod]
+        public void VariableChangesType()
+        {
+            ByteMemory memory = new ByteMemory();
+            Variable variable = new IntegerVariable(0, memory);
+
+            variable.Value = 0x01020304;
+
+            variable.TypeValue = ShortTypeValue.Instance;
+
+            Assert.AreEqual((short) 0x0102, variable.Value);
+        }
+
+        [TestMethod]
+        public void VariableChangedTypeTriggerNewValue()
+        {
+            object oldvalue = -1;
+            object newvalue = -1;
+
+            ByteMemory memory = new ByteMemory();
+            Variable variable = new IntegerVariable(0, memory);
+
+            variable.Value = 0x01020304;
+
+            variable.NewValue += (oldv, newv) => { oldvalue = oldv; newvalue = newv; };
+
+            variable.TypeValue = ShortTypeValue.Instance;
+
+            Assert.AreEqual(0x01020304, oldvalue);
+            Assert.AreEqual((short)0x0102, newvalue);
+        }
     }
 }

@@ -57,6 +57,20 @@
             }
         }
 
+        public TypeValue TypeValue
+        {
+            get
+            {
+                return this.typeValue;
+            }
+
+            set
+            {
+                this.typeValue = value;
+                this.CheckNewValue();
+            }
+        }
+
         internal void RaiseNewValue(object oldvalue, object newvalue)
         {
             if (this.NewValue != null)
