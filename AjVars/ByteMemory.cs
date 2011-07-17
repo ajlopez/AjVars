@@ -45,7 +45,7 @@
             if (value)
                 this.bytes[address / 8] |= (byte)(1 << (address % 8));
             else
-                this.bytes[address / 8] &= (byte) (0xff ^ (1 << (address % 8)));
+                this.bytes[address / 8] &= (byte)(0xff ^ (1 << (address % 8)));
         }
 
         public bool GetBit(int address)

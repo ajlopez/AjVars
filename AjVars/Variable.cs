@@ -21,6 +21,10 @@
             this.memory.ChangedMemory += this.CheckNewValue;
         }
 
+        public delegate void NewValueHandler(object oldvalue, object newvalue);
+
+        public event NewValueHandler NewValue;
+
         public object Value
         {
             get
@@ -53,10 +57,6 @@
             }
         }
 
-        public delegate void NewValueHandler(object oldvalue, object newvalue);
-
-        public event NewValueHandler NewValue;
-
         internal void RaiseNewValue(object oldvalue, object newvalue)
         {
             if (this.NewValue != null)
@@ -67,10 +67,10 @@
         {
             object value = this.Value;
 
-            if (!lastvalue.Equals(value))
+            if (!this.lastvalue.Equals(value))
             {
-                this.RaiseNewValue(lastvalue, value);
-                lastvalue = value;
+                this.RaiseNewValue(this.lastvalue, value);
+                this.lastvalue = value;
             }
         }
     }

@@ -1,14 +1,5 @@
 <stylecopresultscache>
   <version>10</version>
-  <sourcecode name="ByteMemory.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
-    <settings>
-      <timestamp>07/16/2011 19:26:01</timestamp>
-      <milliseconds>988</milliseconds>
-    </settings>
-    <timestamp>07/16/2011 19:24:26</timestamp>
-    <milliseconds>484</milliseconds>
-    <violations />
-  </sourcecode>
   <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/16/2011 19:26:01</timestamp>
@@ -18,34 +9,124 @@
     <milliseconds>285</milliseconds>
     <violations />
   </sourcecode>
+  <sourcecode name="BitTypeValue.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:18:04</timestamp>
+    <milliseconds>862</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Alarm.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 14:18:02</timestamp>
+    <milliseconds>201</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BitVariable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:22:04</timestamp>
+    <milliseconds>87</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BytesTypeValue.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:18:41</timestamp>
+    <milliseconds>841</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IntegerTypeValue.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:16:22</timestamp>
+    <milliseconds>701</milliseconds>
+    <violations />
+  </sourcecode>
   <sourcecode name="IntegerVariable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/16/2011 19:26:01</timestamp>
       <milliseconds>988</milliseconds>
     </settings>
-    <timestamp>07/16/2011 19:11:53</timestamp>
-    <milliseconds>711</milliseconds>
+    <timestamp>07/17/2011 14:02:01</timestamp>
+    <milliseconds>329</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="Variable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+  <sourcecode name="MaximumAlarm.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/16/2011 19:26:01</timestamp>
       <milliseconds>988</milliseconds>
     </settings>
-    <timestamp>07/16/2011 19:27:29</timestamp>
-    <milliseconds>285</milliseconds>
+    <timestamp>07/17/2011 14:18:49</timestamp>
+    <milliseconds>753</milliseconds>
     <violations />
   </sourcecode>
-  <project key="1050597533">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="ShortVariable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>07/16/2011 19:26:01</timestamp>
       <milliseconds>988</milliseconds>
     </settings>
-    <timestamp>07/16/2011 19:27:40</timestamp>
-    <milliseconds>151</milliseconds>
+    <timestamp>07/17/2011 14:01:27</timestamp>
+    <milliseconds>627</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ShortTypeValue.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:16:29</timestamp>
+    <milliseconds>738</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TypeValue.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:17:58</timestamp>
+    <milliseconds>683</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ByteMemory.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:30:12</timestamp>
+    <milliseconds>948</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MinimumAlarm.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:29:29</timestamp>
+    <milliseconds>242</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="1050597533">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="Variable.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/16/2011 19:26:01</timestamp>
+      <milliseconds>988</milliseconds>
+    </settings>
+    <timestamp>07/17/2011 18:30:17</timestamp>
+    <milliseconds>506</milliseconds>
     <violations />
   </sourcecode>
 </stylecopresultscache>
