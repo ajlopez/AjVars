@@ -82,5 +82,37 @@
             Assert.AreEqual(Int16.MaxValue, type.FromBytes(type.ToBytes(Int16.MaxValue)));
             Assert.AreEqual(Int16.MinValue, type.FromBytes(type.ToBytes(Int16.MinValue)));
         }
+
+        [TestMethod]
+        public void IntegerToAndFromMemory()
+        {
+            ByteMemory memory = new ByteMemory();
+            TypeValue type = new IntegerTypeValue();
+
+            type.ToMemory(memory, 0, 10);
+            Assert.AreEqual(10, type.FromMemory(memory, 0));
+            type.ToMemory(memory, 10, -1);
+            Assert.AreEqual(-1, type.FromMemory(memory, 10));
+            type.ToMemory(memory, 20, Int32.MaxValue);
+            Assert.AreEqual(Int32.MaxValue, type.FromMemory(memory, 20));
+            type.ToMemory(memory, 30, Int32.MinValue);
+            Assert.AreEqual(Int32.MinValue, type.FromMemory(memory, 30));
+        }
+
+        [TestMethod]
+        public void ShortToAndFromMemory()
+        {
+            ByteMemory memory = new ByteMemory();
+            TypeValue type = new ShortTypeValue();
+
+            type.ToMemory(memory, 0, (short) 10);
+            Assert.AreEqual((short) 10, type.FromMemory(memory, 0));
+            type.ToMemory(memory, 10, (short) -1);
+            Assert.AreEqual((short) -1, type.FromMemory(memory, 10));
+            type.ToMemory(memory, 20, Int16.MaxValue);
+            Assert.AreEqual(Int16.MaxValue, type.FromMemory(memory, 20));
+            type.ToMemory(memory, 30, Int16.MinValue);
+            Assert.AreEqual(Int16.MinValue, type.FromMemory(memory, 30));
+        }
     }
 }
