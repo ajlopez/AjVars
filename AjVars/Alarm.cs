@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    public abstract class Alarm
+    public class Alarm
     {
         private Variable variable;
         private Func<object, object, bool> condition;
