@@ -22,7 +22,7 @@
         {
             get
             {
-                return this.typeValue.FromBytes(this.GetBytesFromMemory());
+                return this.typeValue.FromMemory(this.memory, this.address);
             }
 
             set
@@ -42,7 +42,7 @@
 
                 if (!newvalue.Equals(oldvalue))
                 {
-                    this.SetBytesToMemory(this.typeValue.ToBytes(newvalue));
+                    this.typeValue.ToMemory(this.memory, this.address, newvalue);
                     this.RaiseNewValue(oldvalue, newvalue);
                 }
             }
@@ -56,16 +56,6 @@
         {
             if (this.NewValue != null)
                 this.NewValue(oldvalue, newvalue);
-        }
-
-        internal byte[] GetBytesFromMemory()
-        {
-            return this.memory.GetBytes(this.address, this.typeValue.Size);
-        }
-
-        internal void SetBytesToMemory(byte[] values)
-        {
-            this.memory.SetBytes(this.address, values);
         }
     }
 }
