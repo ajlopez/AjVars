@@ -7,6 +7,17 @@
 
     public abstract class Alarm
     {
+        private Variable variable;
+        private Func<object, object, bool> condition;
+
+        public Alarm(Variable variable, Func<object, object, bool> condition)
+        {
+            this.variable = variable;
+            this.condition = condition;
+
+            this.variable.NewValue += this.NewValue;
+        }
+
         public delegate void AlarmHandler(object oldvalue, object newvalue);
 
         public event AlarmHandler NewAlarm;
@@ -16,24 +27,10 @@
             if (this.NewAlarm != null)
                 this.NewAlarm(oldvalue, newvalue);
         }
-    }
-
-    public class Alarm<T> : Alarm
-    {
-        private Variable<T> variable;
-        private Func<T, T, bool> condition;
-
-        public Alarm(Variable<T> variable, Func<T, T, bool> condition)
-        {
-            this.variable = variable;
-            this.condition = condition;
-
-            this.variable.NewValue += this.NewValue;
-        }
 
         private void NewValue(object oldvalue, object newvalue)
         {
-            if (this.condition((T) oldvalue, (T) newvalue))
+            if (this.condition(oldvalue, newvalue))
                 this.RaiseNewAlarm(oldvalue, newvalue);
         }
     }

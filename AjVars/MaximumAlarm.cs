@@ -5,10 +5,10 @@
     using System.Linq;
     using System.Text;
 
-    public class MaximumAlarm<T> : Alarm<T> where T : IComparable
+    public class MaximumAlarm : Alarm 
     {
-        public MaximumAlarm(Variable<T> variable, T value)
-            : base(variable, (oldvalue, newvalue) => newvalue.CompareTo(value) > 0)
+        public MaximumAlarm(Variable variable, object value)
+            : base(variable, (oldvalue, newvalue) => ((IComparable)newvalue).CompareTo(value) > 0)
         {
         }
     }

@@ -8,19 +8,45 @@
     public abstract class Variable
     {
         private int address;
-        private int count;
+        private TypeValue typeValue;
         private ByteMemory memory;
 
-        public Variable(int address, int count, ByteMemory memory)
+        public Variable(int address, TypeValue typeValue, ByteMemory memory)
         {
             this.address = address;
             this.memory = memory;
-            this.count = count;
+            this.typeValue = typeValue;
         }
 
-        public abstract object Value { get; set; }
+        public object Value
+        {
+            get
+            {
+                return this.typeValue.FromBytes(this.GetBytesFromMemory());
+            }
 
-        public int Size { get { return this.count; } }
+            set
+            {
+                object newvalue;
+
+                if (value is string)
+                {
+                    newvalue = this.typeValue.ParseString((string)value);
+                }
+                else
+                {
+                    newvalue = value;
+                }
+
+                object oldvalue = this.Value;
+
+                if (!newvalue.Equals(oldvalue))
+                {
+                    this.SetBytesToMemory(this.typeValue.ToBytes(newvalue));
+                    this.RaiseNewValue(oldvalue, newvalue);
+                }
+            }
+        }
 
         public delegate void NewValueHandler(object oldvalue, object newvalue);
 
@@ -34,56 +60,12 @@
 
         internal byte[] GetBytesFromMemory()
         {
-            return this.memory.GetBytes(this.address, this.count);
+            return this.memory.GetBytes(this.address, this.typeValue.Size);
         }
 
         internal void SetBytesToMemory(byte[] values)
         {
             this.memory.SetBytes(this.address, values);
         }
-    }
-
-    public abstract class Variable<T> : Variable 
-    {
-        public Variable(int address, int count, ByteMemory memory)
-            : base(address, count, memory)
-        {
-        }
-
-        public override object Value
-        {
-            get 
-            { 
-                return this.FromBytes(this.GetBytesFromMemory());
-            }
-
-            set
-            {
-                T newvalue;
-
-                if (value is string)
-                {
-                    newvalue = (T)this.ParseString((string)value);
-                }
-                else
-                {
-                    newvalue = (T)value;
-                }
-
-                T oldvalue = (T)this.Value;
-
-                if (!newvalue.Equals(oldvalue))
-                {
-                    this.SetBytesToMemory(this.ToBytes(newvalue));
-                    this.RaiseNewValue(oldvalue, newvalue);
-                }
-            }
-        }
-
-        public abstract object ParseString(string text);
-
-        internal abstract byte[] ToBytes(T value);
-
-        internal abstract T FromBytes(byte[] values);
     }
 }

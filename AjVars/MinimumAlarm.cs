@@ -5,10 +5,10 @@
     using System.Linq;
     using System.Text;
 
-    public class MinimumAlarm<T> : Alarm<T> where T : IComparable
+    public class MinimumAlarm : Alarm
     {
-        public MinimumAlarm(Variable<T> variable, T value)
-            : base(variable, (oldvalue, newvalue) => newvalue.CompareTo(value) < 0)
+        public MinimumAlarm(Variable variable, object value)
+            : base(variable, (oldvalue, newvalue) => ((IComparable) newvalue).CompareTo(value) < 0)
         {
         }
     }

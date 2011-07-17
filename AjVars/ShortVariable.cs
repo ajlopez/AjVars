@@ -6,30 +6,11 @@
     using System.Linq;
     using System.Text;
 
-    public class ShortVariable : Variable<short>
+    public class ShortVariable : Variable
     {
         public ShortVariable(int address, ByteMemory memory)
-            : base(address, 2, memory)
+            : base(address, new ShortTypeValue(), memory)
         {
-        }
-
-        public override object ParseString(string text)
-        {
-            return Int16.Parse(text);
-        }
-
-        internal override byte[] ToBytes(short value)
-        {
-            byte[] bytes = new byte[2];
-            bytes[0] = (byte)((value >> 8) & 0xff);
-            bytes[1] = (byte)(value & 0xff);
-            return bytes;
-        }
-
-        internal override short FromBytes(byte[] values)
-        {
-            short value = (short)(((ushort)values[1]) | (((ushort)values[0]) << 8));
-            return value;
         }
     }
 }
