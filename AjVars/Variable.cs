@@ -12,6 +12,11 @@
         private ByteMemory memory;
         private object lastvalue;
 
+        public static Variable MakeBitVariable(int address, ByteMemory memory)
+        {
+            return new Variable(address, BitTypeValue.Instance, memory);
+        }
+
         public static Variable MakeIntegerVariable(int address, ByteMemory memory)
         {
             return new Variable(address, IntegerTypeValue.Instance, memory);

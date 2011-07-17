@@ -156,7 +156,7 @@
         public void CreateSetAndGetBitVariable()
         {
             ByteMemory memory = new ByteMemory();
-            Variable variable = new BitVariable(10, memory);
+            Variable variable = Variable.MakeBitVariable(10, memory);
 
             Assert.AreEqual(false, variable.Value);
             variable.Value = true;
@@ -170,7 +170,7 @@
             int count = 0;
 
             ByteMemory memory = new ByteMemory();
-            Variable variable = new BitVariable(10, memory);
+            Variable variable = Variable.MakeBitVariable(10, memory);
 
             variable.NewValue += (oldvalue, newvalue) => count++;
 
