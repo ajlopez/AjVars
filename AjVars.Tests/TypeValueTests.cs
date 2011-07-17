@@ -71,5 +71,16 @@
             Assert.AreEqual(Int32.MaxValue, type.FromBytes(type.ToBytes(Int32.MaxValue)));
             Assert.AreEqual(Int32.MinValue, type.FromBytes(type.ToBytes(Int32.MinValue)));
         }
+
+        [TestMethod]
+        public void ShortToAndFromBytes()
+        {
+            TypeValue type = new ShortTypeValue();
+
+            Assert.AreEqual((short)10, type.FromBytes(type.ToBytes((short)10)));
+            Assert.AreEqual((short)-1, type.FromBytes(type.ToBytes((short)-1)));
+            Assert.AreEqual(Int16.MaxValue, type.FromBytes(type.ToBytes(Int16.MaxValue)));
+            Assert.AreEqual(Int16.MinValue, type.FromBytes(type.ToBytes(Int16.MinValue)));
+        }
     }
 }

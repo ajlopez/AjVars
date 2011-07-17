@@ -12,14 +12,19 @@
             return Int16.Parse(text);
         }
 
-        public override byte[] ToBytes(object value)
+        public override byte[] ToBytes(object obj)
         {
-            throw new NotImplementedException();
+            short value = (short)obj;
+            byte[] bytes = new byte[2];
+            bytes[0] = (byte)((value >> 8) & 0xff);
+            bytes[1] = (byte)(value & 0xff);
+            return bytes;
         }
 
-        public override object FromBytes(byte[] values)
+        public override object FromBytes(byte[] bytes)
         {
-            throw new NotImplementedException();
+            short value = (short)(((ushort)bytes[1]) | (((ushort)bytes[0]) << 8));
+            return value;
         }
     }
 }
