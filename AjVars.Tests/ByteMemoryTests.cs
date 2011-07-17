@@ -115,5 +115,41 @@
 
             Assert.AreEqual(0, count);
         }
+
+        [TestMethod]
+        public void SetBitsToOne()
+        {
+            ByteMemory memory = new ByteMemory();
+
+            memory.SetBit(0, true);
+            Assert.AreEqual(0x01, memory.GetBytes(0, 1)[0]);
+            memory.SetBit(1, true);
+            Assert.AreEqual(0x03, memory.GetBytes(0, 1)[0]);
+            memory.SetBit(7, true);
+            Assert.AreEqual(0x83, memory.GetBytes(0, 1)[0]);
+            memory.SetBit(8, true);
+            Assert.AreEqual(0x01, memory.GetBytes(1, 1)[0]);
+            memory.SetBit(9, true);
+            Assert.AreEqual(0x03, memory.GetBytes(1, 1)[0]);
+        }
+
+        [TestMethod]
+        public void SetBitsToZero()
+        {
+            ByteMemory memory = new ByteMemory();
+
+            memory.SetBytes(0, new byte[] { 0xff, 0xff });
+
+            memory.SetBit(0, false);
+            Assert.AreEqual(0xfe, memory.GetBytes(0, 1)[0]);
+            memory.SetBit(1, false);
+            Assert.AreEqual(0xfc, memory.GetBytes(0, 1)[0]);
+            memory.SetBit(7, false);
+            Assert.AreEqual(0x7c, memory.GetBytes(0, 1)[0]);
+            memory.SetBit(8, false);
+            Assert.AreEqual(0xfe, memory.GetBytes(1, 1)[0]);
+            memory.SetBit(9, false);
+            Assert.AreEqual(0xfc, memory.GetBytes(1, 1)[0]);
+        }
     }
 }

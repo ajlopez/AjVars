@@ -40,6 +40,14 @@
                 this.bytes[address + k] = values[k];
         }
 
+        public void SetBit(int address, bool value)
+        {
+            if (value)
+                this.bytes[address / 8] |= (byte)(1 << (address % 8));
+            else
+                this.bytes[address / 8] &= (byte) (0xff ^ (1 << (address % 8)));
+        }
+
         public void NewValues(int address, byte[] newvalues)
         {
             bool changed = false;
