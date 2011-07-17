@@ -76,7 +76,7 @@
         }
 
         [TestMethod]
-        public void RaiseNewValueEvent()
+        public void TriggerNewValueEvent()
         {
             int count = 0;
 
@@ -89,7 +89,7 @@
         }
 
         [TestMethod]
-        public void RaiseNewValueEvents()
+        public void TriggerNewValueEvents()
         {
             int count = 0;
 
@@ -104,7 +104,7 @@
         }
 
         [TestMethod]
-        public void RaiseNewValueEventsWithExtremeValues()
+        public void TriggerNewValueEventsWithExtremeValues()
         {
             int count = 0;
 
