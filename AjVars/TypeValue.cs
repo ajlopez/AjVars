@@ -11,6 +11,6 @@
 
         public abstract byte[] ToBytes(object obj);
 
-        public abstract object FromBytes(byte[] obj);
+        public abstract object FromBytes(byte[] bytes);
     }
 }
