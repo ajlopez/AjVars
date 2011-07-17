@@ -64,7 +64,7 @@
         [TestMethod]
         public void IntegerToAndFromBytes()
         {
-            TypeValue type = new IntegerTypeValue();
+            BytesTypeValue type = new IntegerTypeValue();
 
             Assert.AreEqual(10, type.FromBytes(type.ToBytes(10)));
             Assert.AreEqual(-1, type.FromBytes(type.ToBytes(-1)));
@@ -75,7 +75,7 @@
         [TestMethod]
         public void ShortToAndFromBytes()
         {
-            TypeValue type = new ShortTypeValue();
+            BytesTypeValue type = new ShortTypeValue();
 
             Assert.AreEqual((short)10, type.FromBytes(type.ToBytes((short)10)));
             Assert.AreEqual((short)-1, type.FromBytes(type.ToBytes((short)-1)));
@@ -137,6 +137,21 @@
 
             Assert.AreEqual(false, type.ParseString("0"));
             Assert.AreEqual(true, type.ParseString("1"));
+        }
+
+        [TestMethod]
+        public void SetAndGetBitTypeValueUsingMemory()
+        {
+            ByteMemory memory = new ByteMemory();
+            TypeValue type = new BitTypeValue();
+
+            type.ToMemory(memory, 10, true);
+            Assert.IsTrue(memory.GetBit(10));
+            Assert.IsFalse(memory.GetBit(9));
+            Assert.IsFalse(memory.GetBit(11));
+            Assert.AreEqual(true, type.FromMemory(memory, 10));
+            Assert.AreEqual(false, type.FromMemory(memory, 9));
+            Assert.AreEqual(false, type.FromMemory(memory, 11));
         }
     }
 }

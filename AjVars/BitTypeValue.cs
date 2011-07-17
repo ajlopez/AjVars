@@ -7,19 +7,14 @@
 
     public class BitTypeValue : TypeValue
     {
-        public override short Size
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         public override object FromMemory(ByteMemory memory, int address)
         {
-            throw new NotImplementedException();
+            return memory.GetBit(address);
         }
 
         public override void ToMemory(ByteMemory memory, int address, object obj)
         {
-            throw new NotImplementedException();
+            memory.SetBit(address, (bool)obj);
         }
 
         public override object ParseString(string text)
@@ -31,16 +26,6 @@
                 return true;
 
             return Boolean.Parse(text);
-        }
-
-        public override byte[] ToBytes(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object FromBytes(byte[] bytes)
-        {
-            throw new NotImplementedException();
         }
     }
 }

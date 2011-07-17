@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Text;
 
-    public class ShortTypeValue : TypeValue
+    public class ShortTypeValue : BytesTypeValue
     {
         public override short Size { get { return 2; } }
 
