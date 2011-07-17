@@ -12,14 +12,14 @@
         [TestMethod]
         public void CreateIntegerVariableAndGetValue()
         {
-            Variable variable = new IntegerVariable(0, new ByteMemory());
+            Variable variable = Variable.MakeIntegerVariable(0, new ByteMemory());
             Assert.AreEqual(0, variable.Value);
         }
 
         [TestMethod]
         public void CreateIntegerVariableSetAndGetValue()
         {
-            Variable variable = new IntegerVariable(10, new ByteMemory());
+            Variable variable = Variable.MakeIntegerVariable(10, new ByteMemory());
             variable.Value = 1;
             Assert.AreEqual(1, variable.Value);
         }
@@ -27,7 +27,7 @@
         [TestMethod]
         public void SetIntegerVariableWithStringValue()
         {
-            Variable variable = new IntegerVariable(20, new ByteMemory());
+            Variable variable = Variable.MakeIntegerVariable(20, new ByteMemory());
             variable.Value = "1";
             Assert.AreEqual(1, variable.Value);
         }
@@ -35,7 +35,7 @@
         [TestMethod]
         public void SetIntegerVariableWithMinMaxValues()
         {
-            Variable variable = new IntegerVariable(20, new ByteMemory());
+            Variable variable = Variable.MakeIntegerVariable(20, new ByteMemory());
             variable.Value = Int32.MaxValue;
             Assert.AreEqual(Int32.MaxValue, variable.Value);
             variable.Value = Int32.MinValue;
@@ -80,7 +80,7 @@
         {
             int count = 0;
 
-            Variable variable = new IntegerVariable(0, new ByteMemory());
+            Variable variable = Variable.MakeIntegerVariable(0, new ByteMemory());
             variable.NewValue += (oldvalue, newvalue) => { count++; };
 
             variable.Value = 1;
@@ -93,7 +93,7 @@
         {
             int count = 0;
 
-            Variable variable = new IntegerVariable(0, new ByteMemory());
+            Variable variable = Variable.MakeIntegerVariable(0, new ByteMemory());
             variable.NewValue += (oldvalue, newvalue) => { count++; };
 
             variable.Value = 1;
@@ -108,7 +108,7 @@
         {
             int count = 0;
 
-            Variable variable = new IntegerVariable(0, new ByteMemory());
+            Variable variable = Variable.MakeIntegerVariable(0, new ByteMemory());
             variable.NewValue += (oldvalue, newvalue) => { count++; };
 
             variable.Value = 0; // no event raised
@@ -125,7 +125,7 @@
             object newvalue = -1;
 
             ByteMemory memory = new ByteMemory();
-            Variable variable = new IntegerVariable(0, memory);
+            Variable variable = Variable.MakeIntegerVariable(0, memory);
 
             variable.NewValue += (oldv, newv) => { oldvalue = oldv; newvalue = newv; };
 
@@ -142,7 +142,7 @@
             object newvalue = -1;
 
             ByteMemory memory = new ByteMemory();
-            Variable variable = new IntegerVariable(4, memory);
+            Variable variable = Variable.MakeIntegerVariable(4, memory);
 
             variable.NewValue += (oldv, newv) => { oldvalue = oldv; newvalue = newv; };
 
@@ -183,7 +183,7 @@
         public void VariableChangesType()
         {
             ByteMemory memory = new ByteMemory();
-            Variable variable = new IntegerVariable(0, memory);
+            Variable variable = Variable.MakeIntegerVariable(0, memory);
 
             variable.Value = 0x01020304;
 
@@ -199,7 +199,7 @@
             object newvalue = -1;
 
             ByteMemory memory = new ByteMemory();
-            Variable variable = new IntegerVariable(0, memory);
+            Variable variable = Variable.MakeIntegerVariable(0, memory);
 
             variable.Value = 0x01020304;
 

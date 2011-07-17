@@ -55,7 +55,6 @@
     <Compile Include="MaximumAlarm.cs" />
     <Compile Include="MinimumAlarm.cs" />
     <Compile Include="ShortVariable.cs" />
-    <Compile Include="IntegerVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeValue.cs" />
     <Compile Include="Variable.cs" />

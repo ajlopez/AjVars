@@ -5,12 +5,17 @@
     using System.Linq;
     using System.Text;
 
-    public abstract class Variable
+    public class Variable
     {
         private int address;
         private TypeValue typeValue;
         private ByteMemory memory;
         private object lastvalue;
+
+        public static Variable MakeIntegerVariable(int address, ByteMemory memory)
+        {
+            return new Variable(address, IntegerTypeValue.Instance, memory);
+        }
 
         public Variable(int address, TypeValue typeValue, ByteMemory memory)
         {

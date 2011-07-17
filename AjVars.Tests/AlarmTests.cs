@@ -14,7 +14,7 @@
         [TestInitialize]
         public void Setup()
         {
-            this.integerVariable = new IntegerVariable(0, new ByteMemory());
+            this.integerVariable = Variable.MakeIntegerVariable(0, new ByteMemory());
         }
 
         [TestMethod]
