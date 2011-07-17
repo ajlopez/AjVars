@@ -87,5 +87,33 @@
             for (int k = 0; k < values.Length; k++)
                 Assert.AreEqual(values[k], result[k]);
         }
+
+        [TestMethod]
+        public void ChangeValuesAndTriggerChangeMemoryEvent()
+        {
+            int count = 0;
+
+            ByteMemory bytememory = new ByteMemory();
+
+            bytememory.ChangedMemory += () => count++;
+
+            bytememory.NewValues(10, new byte[] { 1, 2, 3 });
+
+            Assert.AreEqual(1, count);
+        }
+
+        [TestMethod]
+        public void SameValuesDontTriggerChangeMemoryEvent()
+        {
+            int count = 0;
+
+            ByteMemory bytememory = new ByteMemory();
+
+            bytememory.ChangedMemory += () => count++;
+
+            bytememory.NewValues(10, new byte[] { 0, 0, 0 });
+
+            Assert.AreEqual(0, count);
+        }
     }
 }
