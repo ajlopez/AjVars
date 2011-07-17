@@ -8,9 +8,9 @@
     public class Alarm
     {
         private Variable variable;
-        private Func<object, object, bool> condition;
+        private Func<object, bool> condition;
 
-        public Alarm(Variable variable, Func<object, object, bool> condition)
+        public Alarm(Variable variable, Func<object, bool> condition)
         {
             this.variable = variable;
             this.condition = condition;
@@ -20,18 +20,28 @@
 
         public delegate void AlarmHandler(object oldvalue, object newvalue);
 
-        public event AlarmHandler NewAlarm;
+        public event AlarmHandler StartAlarm;
 
-        public void RaiseNewAlarm(object oldvalue, object newvalue)
+        public event AlarmHandler StopAlarm;
+
+        public void RaiseStartAlarm(object oldvalue, object newvalue)
         {
-            if (this.NewAlarm != null)
-                this.NewAlarm(oldvalue, newvalue);
+            if (this.StartAlarm != null)
+                this.StartAlarm(oldvalue, newvalue);
+        }
+
+        public void RaiseStopAlarm(object oldvalue, object newvalue)
+        {
+            if (this.StopAlarm != null)
+                this.StopAlarm(oldvalue, newvalue);
         }
 
         private void NewValue(object oldvalue, object newvalue)
         {
-            if (this.condition(oldvalue, newvalue))
-                this.RaiseNewAlarm(oldvalue, newvalue);
+            if (!this.condition(oldvalue) && this.condition(newvalue))
+                this.RaiseStartAlarm(oldvalue, newvalue);
+            else if (this.condition(oldvalue) && !this.condition(newvalue))
+                this.RaiseStopAlarm(oldvalue, newvalue);
         }
     }
 }

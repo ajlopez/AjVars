@@ -22,8 +22,8 @@
         {
             int count = 0;
             this.integerVariable.Value = 20;
-            Alarm alarm = new Alarm(this.integerVariable, (oldvalue, newvalue) => ((int) newvalue) == 30);
-            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+            Alarm alarm = new Alarm(this.integerVariable, value => ((int) value) == 30);
+            alarm.StartAlarm += (oldvalue, newvalue) => count++;
             this.integerVariable.Value = 30;
             Assert.AreEqual(1, count);
         }
@@ -33,8 +33,8 @@
         {
             int count = 0;
             this.integerVariable.Value = 20;
-            Alarm alarm = new Alarm(this.integerVariable, (oldvalue, newvalue) => (int) newvalue == 30);
-            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+            Alarm alarm = new Alarm(this.integerVariable, value => (int) value == 30);
+            alarm.StartAlarm += (oldvalue, newvalue) => count++;
 
             for (int k = 1; k <= 100; k++)
                 if (k != 30)
@@ -50,7 +50,7 @@
             this.integerVariable.Value = 20;
             
             MinimumAlarm alarm = new MinimumAlarm(this.integerVariable, 10);
-            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+            alarm.StartAlarm += (oldvalue, newvalue) => count++;
 
             this.integerVariable.Value = 5;
 
@@ -64,7 +64,7 @@
             this.integerVariable.Value = 20;
 
             MinimumAlarm alarm = new MinimumAlarm(this.integerVariable, 10);
-            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+            alarm.StartAlarm += (oldvalue, newvalue) => count++;
 
             this.integerVariable.Value = 5;
             this.integerVariable.Value = 4;
@@ -80,7 +80,7 @@
             this.integerVariable.Value = 20;
 
             MaximumAlarm alarm = new MaximumAlarm(this.integerVariable, 30);
-            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+            alarm.StartAlarm += (oldvalue, newvalue) => count++;
 
             this.integerVariable.Value = 45;
 
@@ -94,7 +94,7 @@
             this.integerVariable.Value = 20;
 
             MaximumAlarm alarm = new MaximumAlarm(this.integerVariable, 40);
-            alarm.NewAlarm += (oldvalue, newvalue) => count++;
+            alarm.StartAlarm += (oldvalue, newvalue) => count++;
 
             this.integerVariable.Value = 45;
             this.integerVariable.Value = 44;

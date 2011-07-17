@@ -8,7 +8,7 @@
     public class MaximumAlarm : Alarm 
     {
         public MaximumAlarm(Variable variable, object value)
-            : base(variable, (oldvalue, newvalue) => ((IComparable)newvalue).CompareTo(value) > 0)
+            : base(variable, val => ((IComparable)val).CompareTo(value) > 0)
         {
         }
     }
