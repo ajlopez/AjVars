@@ -41,6 +41,7 @@
     <Compile Include="AlarmTests.cs" />
     <Compile Include="ByteMemoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeValueTests.cs" />
     <Compile Include="VariableTests.cs" />
   </ItemGroup>
   <ItemGroup>
