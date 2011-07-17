@@ -9,7 +9,7 @@
     {
         public override object ParseString(string text)
         {
-            throw new NotImplementedException();
+            return Int32.Parse(text);
         }
 
         public override byte[] ToBytes(object value)
