@@ -7,6 +7,8 @@
 
     public class IntegerTypeValue : TypeValue
     {
+        public override short Size { get { return 4; } }
+
         public override object ParseString(string text)
         {
             return Int32.Parse(text);
@@ -15,7 +17,7 @@
         public override byte[] ToBytes(object obj)
         {
             int value = (int)obj;
-            byte[] bytes = new byte[4];
+            byte[] bytes = new byte[this.Size];
             bytes[0] = (byte)((value >> 24) & 0xff);
             bytes[1] = (byte)((value >> 16) & 0xff);
             bytes[2] = (byte)((value >> 8) & 0xff);

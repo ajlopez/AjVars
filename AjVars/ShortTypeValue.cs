@@ -7,6 +7,8 @@
 
     public class ShortTypeValue : TypeValue
     {
+        public override short Size { get { return 2; } }
+
         public override object ParseString(string text)
         {
             return Int16.Parse(text);
@@ -15,7 +17,7 @@
         public override byte[] ToBytes(object obj)
         {
             short value = (short)obj;
-            byte[] bytes = new byte[2];
+            byte[] bytes = new byte[this.Size];
             bytes[0] = (byte)((value >> 8) & 0xff);
             bytes[1] = (byte)(value & 0xff);
             return bytes;
