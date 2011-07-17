@@ -117,5 +117,39 @@
 
             Assert.AreEqual(2, count);
         }
+
+        [TestMethod]
+        public void ChangeInMemoryTriggerVariableNewValue()
+        {
+            object oldvalue = -1;
+            object newvalue = -1;
+
+            ByteMemory memory = new ByteMemory();
+            Variable variable = new IntegerVariable(0, memory);
+
+            variable.NewValue += (oldv, newv) => { oldvalue = oldv; newvalue = newv; };
+
+            memory.NewValues(0, new byte[] { 1, 2, 3, 4 });
+
+            Assert.AreEqual(0, oldvalue);
+            Assert.AreEqual(0x01020304, newvalue);
+        }
+
+        [TestMethod]
+        public void ChangeInMemoryDontTriggerVariableNewValue()
+        {
+            object oldvalue = -1;
+            object newvalue = -1;
+
+            ByteMemory memory = new ByteMemory();
+            Variable variable = new IntegerVariable(4, memory);
+
+            variable.NewValue += (oldv, newv) => { oldvalue = oldv; newvalue = newv; };
+
+            memory.NewValues(0, new byte[] { 1, 2, 3, 4 });
+
+            Assert.AreEqual(-1, oldvalue);
+            Assert.AreEqual(-1, newvalue);
+        }
     }
 }

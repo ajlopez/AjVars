@@ -10,12 +10,15 @@
         private int address;
         private TypeValue typeValue;
         private ByteMemory memory;
+        private object lastvalue;
 
         public Variable(int address, TypeValue typeValue, ByteMemory memory)
         {
             this.address = address;
             this.memory = memory;
             this.typeValue = typeValue;
+            this.lastvalue = this.Value;
+            this.memory.ChangedMemory += this.CheckNewValue;
         }
 
         public object Value
@@ -45,6 +48,8 @@
                     this.typeValue.ToMemory(this.memory, this.address, newvalue);
                     this.RaiseNewValue(oldvalue, newvalue);
                 }
+
+                this.lastvalue = newvalue;
             }
         }
 
@@ -56,6 +61,17 @@
         {
             if (this.NewValue != null)
                 this.NewValue(oldvalue, newvalue);
+        }
+
+        private void CheckNewValue()
+        {
+            object value = this.Value;
+
+            if (!lastvalue.Equals(value))
+            {
+                this.RaiseNewValue(lastvalue, value);
+                lastvalue = value;
+            }
         }
     }
 }
