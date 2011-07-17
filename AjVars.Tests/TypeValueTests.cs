@@ -114,5 +114,29 @@
             type.ToMemory(memory, 30, Int16.MinValue);
             Assert.AreEqual(Int16.MinValue, type.FromMemory(memory, 30));
         }
+
+        [TestMethod]
+        public void ParseBitTypeValueFromBooleanString()
+        {
+            TypeValue type = new BitTypeValue();
+
+            Assert.AreEqual(false, type.ParseString("false"));
+            Assert.AreEqual(true, type.ParseString("true"));
+
+            Assert.AreEqual(false, type.ParseString("False"));
+            Assert.AreEqual(true, type.ParseString("True"));
+
+            Assert.AreEqual(false, type.ParseString("FALSE"));
+            Assert.AreEqual(true, type.ParseString("TRUE"));
+        }
+
+        [TestMethod]
+        public void ParseBitTypeValueFromZeroOneString()
+        {
+            TypeValue type = new BitTypeValue();
+
+            Assert.AreEqual(false, type.ParseString("0"));
+            Assert.AreEqual(true, type.ParseString("1"));
+        }
     }
 }
