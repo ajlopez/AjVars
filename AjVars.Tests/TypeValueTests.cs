@@ -60,5 +60,16 @@
             TypeValue type = new ShortTypeValue();
             type.ParseString("foo");
         }
+
+        [TestMethod]
+        public void IntegerToAndFromBytes()
+        {
+            TypeValue type = new IntegerTypeValue();
+
+            Assert.AreEqual(10, type.FromBytes(type.ToBytes(10)));
+            Assert.AreEqual(-1, type.FromBytes(type.ToBytes(-1)));
+            Assert.AreEqual(Int32.MaxValue, type.FromBytes(type.ToBytes(Int32.MaxValue)));
+            Assert.AreEqual(Int32.MinValue, type.FromBytes(type.ToBytes(Int32.MinValue)));
+        }
     }
 }

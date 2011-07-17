@@ -9,8 +9,8 @@
     {
         public abstract object ParseString(string text);
 
-        public abstract byte[] ToBytes(object value);
+        public abstract byte[] ToBytes(object obj);
 
-        public abstract object FromBytes(byte[] values);
+        public abstract object FromBytes(byte[] obj);
     }
 }

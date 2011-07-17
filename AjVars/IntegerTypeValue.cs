@@ -12,12 +12,12 @@
             return Int32.Parse(text);
         }
 
-        public override byte[] ToBytes(object value)
+        public override byte[] ToBytes(object obj)
         {
             throw new NotImplementedException();
         }
 
-        public override object FromBytes(byte[] values)
+        public override object FromBytes(byte[] obj)
         {
             throw new NotImplementedException();
         }
