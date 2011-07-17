@@ -118,7 +118,7 @@
         [TestMethod]
         public void ParseBitTypeValueFromBooleanString()
         {
-            TypeValue type = new BitTypeValue();
+            TypeValue type = BitTypeValue.Instance;
 
             Assert.AreEqual(false, type.ParseString("false"));
             Assert.AreEqual(true, type.ParseString("true"));
@@ -133,7 +133,7 @@
         [TestMethod]
         public void ParseBitTypeValueFromZeroOneString()
         {
-            TypeValue type = new BitTypeValue();
+            TypeValue type = BitTypeValue.Instance;
 
             Assert.AreEqual(false, type.ParseString("0"));
             Assert.AreEqual(true, type.ParseString("1"));
@@ -143,7 +143,7 @@
         public void SetAndGetBitTypeValueUsingMemory()
         {
             ByteMemory memory = new ByteMemory();
-            TypeValue type = new BitTypeValue();
+            TypeValue type = BitTypeValue.Instance;
 
             type.ToMemory(memory, 10, true);
             Assert.IsTrue(memory.GetBit(10));

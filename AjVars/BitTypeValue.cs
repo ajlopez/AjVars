@@ -7,6 +7,14 @@
 
     public class BitTypeValue : TypeValue
     {
+        private static BitTypeValue instance = new BitTypeValue();
+
+        private BitTypeValue()
+        {
+        }
+
+        public static BitTypeValue Instance { get { return instance; } }
+
         public override object FromMemory(ByteMemory memory, int address)
         {
             return memory.GetBit(address);

@@ -9,7 +9,7 @@
     public class BitVariable : Variable
     {
         public BitVariable(int address, ByteMemory memory)
-            : base(address, new BitTypeValue(), memory)
+            : base(address, BitTypeValue.Instance, memory)
         {
         }
     }
